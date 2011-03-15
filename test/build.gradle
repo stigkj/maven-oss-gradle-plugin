@@ -1,0 +1,56 @@
+buildscript {
+   repositories {
+      flatDir name: "parentbuild", dirs: ["${projectDir}/../build/libs"];
+      mavenCentral();
+   }
+   dependencies {
+      classpath "net.sourceforge.purrpackage:maven-oss-gradle-plugin:$mavenossVersion"
+//      classpath "de.huxhorn.gradle:de.huxhorn.gradle.pgp-plugin:0.0.3"
+   }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'maven-oss'
+
+group = "net.sourceforge.purrpackage.maven-oss-integration-test"
+version = "0.0.1"
+
+dependencies {
+             groovy localGroovy();
+}
+install.doLast( {
+  def home = System.properties["user.home"];
+  def f = file( "${home}/.m2/repository/net/sourceforge/purrpackage/maven-oss-integration-test/test/0.0.1" );
+  def pomFile = new File( f, "test-${version}.pom" );
+  checkPom( pomFile );  
+  assert new File( f, "test-${version}.jar" ).exists();
+} )
+
+def checkPom( f ) {
+  String pomString = f.getText();
+  assert pomString.indexOf( "me@here.com" ) > 0  
+  assert pomString.indexOf( "you@there.com" ) > 0
+  assert pomString.indexOf( "GNU Public License" ) > 0
+  assert pomString.indexOf( "Apache Public License" ) > 0  
+  assert pomString.indexOf( "notarealurl" ) > 0
+  assert pomString.indexOf( version ) > 0;
+  assert pomString.indexOf( group ) > 0;
+  assert pomString.indexOf( "Test project configured." ) > 0;
+}
+
+def x = pomConfigurator;
+x.addDeveloper( "me", "me@here.com" );
+x.addDeveloper( "you", "you@there.com" );
+x.gnuLicense()
+x.apacheLicense()
+pomConfigurator.configurePom( {
+    it.pom { project { description "Test project configured." } }
+    .whenConfigured( { aPom -> aPom.project { scm { url "notarealurl" } } 
+                 } )
+} );
+
+
+packageJavadoc << { println( "task packageJavadoc run" ) };
+mavenOssPluginJavadoc << { println( "task mavenOssJavadoc run" ) };
+packageSources << { println( "task packageSources run" ) };
