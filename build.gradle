@@ -3,7 +3,7 @@ buildscript {
       mavenCentral();
    }
    dependencies {
-      classpath "net.sourceforge.purrpackage:maven-oss-gradle-plugin:0.2.0"
+      classpath "net.sourceforge.purrpackage:maven-oss-gradle-plugin:0.3.0"
    }
 }
 
@@ -11,7 +11,7 @@ apply plugin: 'groovy'
 apply plugin: 'maven-oss'
 
 group = "net.sourceforge.purrpackage"
-version = "0.3.0"
+version = "1"
 
 repositories {
   mavenCentral();
