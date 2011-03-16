@@ -2,8 +2,9 @@ buildscript {
    repositories {
       mavenCentral();
    }
+
    dependencies {
-      classpath "net.sourceforge.purrpackage:maven-oss-gradle-plugin:0.3.0"
+      classpath "net.sourceforge.purrpackage:maven-oss-gradle-plugin:1.0"
    }
 }
 
@@ -11,7 +12,7 @@ apply plugin: 'groovy'
 apply plugin: 'maven-oss'
 
 group = "net.sourceforge.purrpackage"
-version = "1"
+version = "1.0"
 
 repositories {
   mavenCentral();
@@ -49,9 +50,9 @@ pomConfigurator.configurePom( {
        description "Conveniently wraps Maven Plugin, Pgp Plugin, with config in the file 'maven.secret.properties' in your home directory"
        inceptionYear "2011"
        scm {
-          url "http://purrpackage.git.sourceforge.net/git/gitweb-index.cgi"
-	  connection "scm:git://purrpackage.git.sourceforge.net/gitroot/purrpackage/purrpackage"
-	  developerConnection "scm:git://purrpackage.git.sourceforge.net/gitroot/purrpackage/purrpackage"
+          url "http://purrpkg-gradle.git.sourceforge.net/git/gitweb-index.cgi"
+	  connection "scm:git://purrpkg-gradle.git.sourceforge.net/gitroot/purrpkg-gradle/purrpkg-gradle"
+	  developerConnection "scm:git://purrpkg-gradle.git.sourceforge.net/gitroot/purrpkg-gradle/purrpkg-gradle"
        }
      }
    }
