@@ -44,15 +44,16 @@ pomConfigurator.addDeveloper( "John Roth", "dzhaughnroth@sourceforge.net" );
 pomConfigurator.gnuLicense();
 pomConfigurator.configurePom( { 
    it.pom { project {
-       url "http://purrpackage.sourceforge.net"
+       name "Gradle Plugin for Maven OSS development"
+       url "http://mvnoss-gradle.sourceforge.net"
        groupId "${project.group}"
        version "${version}"
        description "Conveniently wraps Maven Plugin, Pgp Plugin, with config in the file 'maven.secret.properties' in your home directory"
        inceptionYear "2011"
        scm {
-          url "http://purrpkg-gradle.git.sourceforge.net/git/gitweb-index.cgi"
-	  connection "scm:git://purrpkg-gradle.git.sourceforge.net/gitroot/purrpkg-gradle/purrpkg-gradle"
-	  developerConnection "scm:git://purrpkg-gradle.git.sourceforge.net/gitroot/purrpkg-gradle/purrpkg-gradle"
+          url "http://mvnoss-gradle.git.sourceforge.net/git/gitweb-index.cgi"
+	  connection "scm:git://mvnoss-gradle.git.sourceforge.net/gitroot/mvnoss-gradle/mvnoss-gradle"
+	  developerConnection "scm:git://mvnoss-gradle.git.sourceforge.net/gitroot/mvnoss-gradle/mvnoss-gradle"
        }
      }
    }
